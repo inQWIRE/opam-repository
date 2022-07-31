@@ -1,0 +1,41 @@
+opam-version: "2.0"
+synopsis: "Coq library for reasoning about quantum programs"
+description: """
+inQWIRE's QuantumLib is a Coq library for reasoning
+ about quantum computation and quantum programs.
+"""
+maintainer: ["inQWIRE Developers"]
+authors: ["inQWIRE"]
+license: "MIT"
+homepage: "https://github.com/inQWIRE/QuantumLib"
+doc: "https://inqwire.github.io/QuantumLib/toc.html"
+bug-reports: "https://github.com/inQWIRE/QuantumLib/issues"
+depends: [
+  "dune" {>= "2.8"}
+  "coq" {>= "8.12"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/inQWIRE/QuantumLib.git"
+url {
+  src:
+    "https://github.com/inQWIRE/QuantumLib/releases/download/v1.1.0/coq-quantumlib-1.1.0.tbz"
+  checksum: [
+    "sha256=1870d91e6dd445b4ed2eeb4149d7c631f12b02f0da622def3559e1c10fe0b7f2"
+    "sha512=c993a504d9d1b738fde8c4451d50c972f3c438a8dfab77b70adbfd9534b302636cf99e11183645feed07e24704c841486c85a82d727a9eeacfc40b93e1b2ee50"
+  ]
+}
+x-commit-hash: "7ce467bf7a11ad90e7bb6a42e1c3ab9dad18ba0f"
